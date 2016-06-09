@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CS119.3 Lab</string>
+    <string name="login">LOGIN</string>
+    <string name="username">Username:</string>
+    <string name="password">Password:</string>
+    <string name="rememberMe">Remember Me</string>
+    <string name="signIn">Sign In</string>
 </resources>
