@@ -21,6 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
         String msg = "Username: " + username.getText().toString() + "\n Password: " + password.getText().toString() + "\n Remember Me?: " + rememberMe.isChecked();
 
-        Toast.makeText(this, msg, Toast.LENGTH_LONG);
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 }
