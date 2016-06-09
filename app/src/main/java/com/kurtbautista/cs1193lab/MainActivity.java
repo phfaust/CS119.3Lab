@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     {
         EditText username = (EditText)findViewById(R.id.usernameField);
         EditText password = (EditText)findViewById(R.id.passwordField);
-        CheckBox girememberMe = (CheckBox)findViewById(R.id.rememberMeCheckBox);
+        CheckBox rememberMe = (CheckBox)findViewById(R.id.rememberMeCheckBox);
 
         String msg = "Username: " + username.getText().toString() + "\n Password: " + password.getText().toString() + "\n Remember Me?: " + rememberMe.isChecked();
 
