@@ -71,14 +71,16 @@
                 android:layout_height="wrap_content"
                 android:text="@string/confirmNewUser"
                 android:id="@+id/confirmNewUserButton"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:onClick="submitData"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/clear"
                 android:id="@+id/clearNewUserFieldsButton"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:onClick="clearFields"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

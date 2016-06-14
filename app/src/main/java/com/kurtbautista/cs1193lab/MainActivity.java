@@ -28,7 +28,27 @@ public class MainActivity extends AppCompatActivity {
     public void newUser(View v)
     {
         Intent i = new Intent(this, com.kurtbautista.cs1193lab.RegisterActivity.class);
+        startActivityForResult(i, 0);
+    }
 
+    public void onActivityResult(int request, int response, Intent data)
+    {
+        switch(request)
+        {
+            case 0:
+                switch(response)
+                {
+                    case 1:
+                        Bundle b = data.getExtras();
+
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
+        }
     }
 
 }
