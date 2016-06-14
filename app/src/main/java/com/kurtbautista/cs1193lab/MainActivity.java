@@ -1,5 +1,6 @@
 package com.kurtbautista.cs1193lab;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.*;
@@ -23,4 +24,11 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
+
+    public void newUser(View v)
+    {
+        Intent i = new Intent(this, com.kurtbautista.cs1193lab.RegisterActivity.class);
+
+    }
+
 }
