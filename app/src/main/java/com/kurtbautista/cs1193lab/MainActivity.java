@@ -7,6 +7,8 @@ import android.view.*;
 import android.widget.*;
 
 public class MainActivity extends AppCompatActivity {
+    static String savedUsername = "";
+    static String savedPassword = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(i, 0);
     }
 
-    public void onActivityResult(int request, int response, Intent data)
+    protected void onActivityResult(int request, int response, Intent data)
     {
         switch(request)
         {
@@ -40,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
                 {
                     case 1:
                         Bundle b = data.getExtras();
-
+                        savedUsername = b.getString("username");
+                        savedPassword = b.getString("password");
                         break;
                     default:
                         break;
