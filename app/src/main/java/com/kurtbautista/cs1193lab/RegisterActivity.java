@@ -1,6 +1,7 @@
 package com.kurtbautista.cs1193lab;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,17 +28,18 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void submitData(View v)
     {
+        SharedPreferences prefs = getSharedPreferences("register_data", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
         EditText one = (EditText)findViewById(R.id.newEmailField);
         EditText two = (EditText)findViewById(R.id.newPasswordField);
         EditText three = (EditText)findViewById(R.id.newNameField);
         String username = one.getText().toString();
         String password = two.getText().toString();
         String name = three.getText().toString();
-        Intent data = new Intent();
-        data.putExtra("username", username);
-        data.putExtra("password", password);
-        data.putExtra("name", name);
-        setResult(1, data);
+        editor.putString("username", username);
+        editor.putString("password", password);
+        editor.putString("name", name);
+        editor.apply();
         finish();
     }
 }

@@ -16,11 +16,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //SharedPre
     }
 
     public void showToast(View v)
     {
+        SharedPreferences prefs = getSharedPreferences("register_data", MODE_PRIVATE);
+        savedUsername = prefs.getString("username", "");
+        savedPassword = prefs.getString("password", "");
+        savedName = prefs.getString("name", "");
         EditText username = (EditText)findViewById(R.id.usernameField);
         EditText password = (EditText)findViewById(R.id.passwordField);
         CheckBox rememberMe = (CheckBox)findViewById(R.id.rememberMeCheckBox);
@@ -40,29 +43,8 @@ public class MainActivity extends AppCompatActivity {
     public void newUser(View v)
     {
         Intent i = new Intent(this, com.kurtbautista.cs1193lab.RegisterActivity.class);
-        startActivityForResult(i, 0);
+        startActivity(i);
     }
 
-    protected void onActivityResult(int request, int response, Intent data)
-    {
-        switch(request)
-        {
-            case 0:
-                switch(response)
-                {
-                    case 1:
-                        savedUsername = data.getStringExtra("username");
-                        savedPassword = data.getStringExtra("password");
-                        savedName = data.getStringExtra("name");
-                        System.out.println(savedName + savedUsername + savedPassword);
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            default:
-                break;
-        }
-    }
 
 }
