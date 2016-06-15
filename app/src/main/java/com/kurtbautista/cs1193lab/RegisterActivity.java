@@ -27,12 +27,17 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void submitData(View v)
     {
-        Intent i = new Intent();
-        Bundle data = new Bundle();
-        String username = ((EditText)findViewById(R.id.newEmailField)).getText().toString();
-        String password = ((EditText)findViewById(R.id.newPasswordField)).getText().toString();
-        data.putString("username", username);
-        data.putString("password", password);
+        EditText one = (EditText)findViewById(R.id.newEmailField);
+        EditText two = (EditText)findViewById(R.id.newPasswordField);
+        EditText three = (EditText)findViewById(R.id.newNameField);
+        String username = one.getText().toString();
+        String password = two.getText().toString();
+        String name = three.getText().toString();
+        Intent data = new Intent();
+        data.putExtra("username", username);
+        data.putExtra("password", password);
+        data.putExtra("name", name);
+        setResult(1, data);
         finish();
     }
 }
