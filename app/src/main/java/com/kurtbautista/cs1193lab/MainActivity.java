@@ -16,6 +16,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(savedUsername.equals("") && savedPassword.equals(""))
+        {
+            //Open register dialog
+        }
     }
 
     public void showToast(View v)
@@ -51,8 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void newUser(View v)
     {
-        Intent i = new Intent(this, com.kurtbautista.cs1193lab.RegisterActivity.class);
-        startActivity(i);
+//        Intent i = new Intent(this, com.kurtbautista.cs1193lab.RegisterActivity.class);
+//        startActivity(i);
+        //Open register dialog
+        setContentView(R.layout.activity_register);
     }
 
 
