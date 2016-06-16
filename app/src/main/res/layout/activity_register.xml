@@ -59,6 +59,13 @@
             android:ems="10"
             android:id="@+id/newPasswordField" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/bday"
+            android:id="@+id/textView" />
+
         <DatePicker
             android:layout_width="wrap_content"
             android:layout_height="188dp"
