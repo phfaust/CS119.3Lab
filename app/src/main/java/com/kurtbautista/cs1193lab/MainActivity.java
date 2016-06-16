@@ -28,15 +28,24 @@ public class MainActivity extends AppCompatActivity {
         EditText password = (EditText)findViewById(R.id.passwordField);
         CheckBox rememberMe = (CheckBox)findViewById(R.id.rememberMeCheckBox);
 
-        String msg = "Username: " + username.getText().toString() + "\n Password: " + password.getText().toString() + "\n Remember Me?: " + rememberMe.isChecked();
+        String msg = "";
 
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 
-        if(username.getText().toString().equals(savedUsername) && password.getText().toString().equals(savedPassword))
+        if(savedUsername.equals("") && savedPassword.equals(""))
+        {
+            msg = "No user";
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        }
+        else if(username.getText().toString().equals(savedUsername) && password.getText().toString().equals(savedPassword))
         {
             Intent i = new Intent(this, com.kurtbautista.cs1193lab.WelcomeActivity.class);
             i.putExtra("name", savedName);
             startActivity(i);
+        }
+        else
+        {
+            msg = "Invalid credentials";
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
         }
     }
 

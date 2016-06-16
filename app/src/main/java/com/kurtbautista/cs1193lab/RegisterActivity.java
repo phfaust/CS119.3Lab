@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -36,10 +37,18 @@ public class RegisterActivity extends AppCompatActivity {
         String username = one.getText().toString();
         String password = two.getText().toString();
         String name = three.getText().toString();
-        editor.putString("username", username);
-        editor.putString("password", password);
-        editor.putString("name", name);
-        editor.apply();
-        finish();
+        if(!(username.equals("") && password.equals("") && name.equals("")))
+        {
+            editor.putString("username", username);
+            editor.putString("password", password);
+            editor.putString("name", name);
+            editor.apply();
+            finish();
+        }
+        else
+        {
+            String msg = "All fields needed";
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        }
     }
 }
