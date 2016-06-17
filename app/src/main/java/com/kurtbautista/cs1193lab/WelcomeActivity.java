@@ -6,6 +6,9 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class WelcomeActivity extends AppCompatActivity {
 
     @Override
@@ -13,6 +16,22 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         TextView tv = (TextView)findViewById(R.id.welcomeText);
-        setTitle("Welcome, " + getIntent().getStringExtra("name"));
+        String name = getIntent().getStringExtra("name");
+        String bday = getIntent().getStringExtra("bday");
+        String dateToday = "";
+
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("M-d-yyyy");
+        dateToday = df.format(c.getTime());
+        System.out.println(dateToday);
+
+        if(bday.equals(dateToday))
+        {
+            setTitle("Welcome and happy birthday, " + name);
+        }
+        else
+        {
+            setTitle("Welcome, " + name);
+        }
     }
 }
