@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -19,7 +18,7 @@ import android.widget.Toast;
 public class RegisterDialog extends Dialog
 {
     private String result;
-    private static SharedPreferences prefs;
+    private SharedPreferences prefs;
     public RegisterDialog(Context c)
     {
         super(c);
@@ -76,6 +75,11 @@ public class RegisterDialog extends Dialog
                     editor.putString("name", name);
                     editor.putString("bday", bday);
                     editor.apply();
+                    if(!(username.equals(prefs.getString("username", "")) && password.equals(prefs.getString("password", "")) && name.equals(prefs.getString("name", ""))))
+                    {
+                        String msg = "Previous saved data overwritten";
+                        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+                    }
                     dismiss();
                 }
                 else

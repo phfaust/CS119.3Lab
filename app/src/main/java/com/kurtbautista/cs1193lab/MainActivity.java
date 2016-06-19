@@ -9,10 +9,11 @@ import android.widget.*;
 
 public class MainActivity extends AppCompatActivity {
     SharedPreferences prefs = getSharedPreferences("register_data", MODE_PRIVATE);
-    String savedUsername = prefs.getString("email", "");
-    String savedPassword = prefs.getString("email", "");
-    String savedName = prefs.getString("email", "");
-    String savedBirthday = prefs.getString("email", "");
+    String savedUsername = "";//prefs.getString("email", "");
+    String savedPassword = "";//prefs.getString("email", "");
+    String savedName = "";//prefs.getString("email", "");
+    String savedBirthday = "";//prefs.getString("email", "");
+    Boolean savedRememberMe = false;//prefs.getBoolean("remember", false);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +25,21 @@ public class MainActivity extends AppCompatActivity {
             RegisterDialog rd = new RegisterDialog(this);
             rd.show();
         }
+        else if(savedRememberMe)
+        {
+            EditText username = (EditText)findViewById(R.id.usernameField);
+            EditText password = (EditText)findViewById(R.id.passwordField);
+            CheckBox remember = (CheckBox)findViewById(R.id.rememberMeCheckBox);
+            username.setText(savedUsername);
+            password.setText(savedPassword);
+            remember.setChecked(true);
+        }
     }
 
     public void showToast(View v)
     {
         String msg = "";
-        if(!(savedUsername.equals(prefs.getString("username", "")) && savedPassword.equals(prefs.getString("password", "")) && savedName.equals(prefs.getString("name", ""))))
-        {
-            msg = "Previous saved data overwritten";
-            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-        }
+
         savedUsername = prefs.getString("username", "");
         savedPassword = prefs.getString("password", "");
         savedName = prefs.getString("name", "");
@@ -52,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
             Intent i = new Intent(this, com.kurtbautista.cs1193lab.WelcomeActivity.class);
             i.putExtra("name", savedName);
             i.putExtra("bday", savedBirthday);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("remember", rememberMe.isChecked());
             startActivity(i);
         }
         else
