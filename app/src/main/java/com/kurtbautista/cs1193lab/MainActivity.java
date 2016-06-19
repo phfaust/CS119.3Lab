@@ -8,17 +8,34 @@ import android.view.*;
 import android.widget.*;
 
 public class MainActivity extends AppCompatActivity {
-    SharedPreferences prefs = getSharedPreferences("register_data", MODE_PRIVATE);
-    String savedUsername = "";//prefs.getString("email", "");
-    String savedPassword = "";//prefs.getString("email", "");
-    String savedName = "";//prefs.getString("email", "");
-    String savedBirthday = "";//prefs.getString("email", "");
-    Boolean savedRememberMe = false;//prefs.getBoolean("remember", false);
+    SharedPreferences prefs;// = getSharedPreferences("register_data", MODE_PRIVATE);
+    String savedUsername;//prefs.getString("email", "");
+    String savedPassword;//prefs.getString("email", "");
+    String savedName;//prefs.getString("email", "");
+    String savedBirthday;//prefs.getString("email", "");
+    boolean savedRememberMe;//prefs.getBoolean("remember", false);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        try
+        {
+            prefs = getSharedPreferences("register_data", MODE_PRIVATE);
+            savedUsername = prefs.getString("username", "");
+            savedPassword = prefs.getString("password", "");
+            savedName = prefs.getString("name", "");
+            savedBirthday = prefs.getString("bday", "");
+            savedRememberMe = prefs.getBoolean("remember", false);
+        }
+        catch(NullPointerException e)
+        {
+            savedUsername = "";
+            savedPassword = "";
+            savedName = "";
+            savedBirthday = "";
+            savedRememberMe = false;
+        }
 
         if(savedUsername.equals("") && savedPassword.equals(""))
         {
@@ -39,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     public void showToast(View v)
     {
         String msg = "";
-
+        prefs = getSharedPreferences("register_data", MODE_PRIVATE);
         savedUsername = prefs.getString("username", "");
         savedPassword = prefs.getString("password", "");
         savedName = prefs.getString("name", "");
@@ -60,6 +77,10 @@ public class MainActivity extends AppCompatActivity {
             i.putExtra("bday", savedBirthday);
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean("remember", rememberMe.isChecked());
+            //rememberMe.isChecked();
+            //boolean g = savedRememberMe;
+            editor.apply();
+            //boolean gg = rememberMe.isChecked();
             startActivity(i);
         }
         else

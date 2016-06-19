@@ -17,11 +17,12 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
         TextView tv = (TextView)findViewById(R.id.welcomeText);
         String name = getIntent().getStringExtra("name");
-        String bday = getIntent().getStringExtra("bday");
+        String[] bdayArr = getIntent().getStringExtra("bday").split("-");
+        String bday = bdayArr[0] + "-" + bdayArr[1];
         String dateToday = "";
 
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("M-d-yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("M-d");
         dateToday = df.format(c.getTime());
         System.out.println(dateToday);
 
