@@ -8,12 +8,12 @@ import android.view.*;
 import android.widget.*;
 
 public class MainActivity extends AppCompatActivity {
-    SharedPreferences prefs;// = getSharedPreferences("register_data", MODE_PRIVATE);
-    String savedUsername;//prefs.getString("email", "");
-    String savedPassword;//prefs.getString("email", "");
-    String savedName;//prefs.getString("email", "");
-    String savedBirthday;//prefs.getString("email", "");
-    boolean savedRememberMe;//prefs.getBoolean("remember", false);
+    SharedPreferences prefs;
+    String savedUsername;
+    String savedPassword;
+    String savedName;
+    String savedBirthday;
+    boolean savedRememberMe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,10 +77,7 @@ public class MainActivity extends AppCompatActivity {
             i.putExtra("bday", savedBirthday);
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean("remember", rememberMe.isChecked());
-            //rememberMe.isChecked();
-            //boolean g = savedRememberMe;
             editor.apply();
-            //boolean gg = rememberMe.isChecked();
             startActivity(i);
         }
         else
